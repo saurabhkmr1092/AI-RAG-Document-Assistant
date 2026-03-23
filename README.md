@@ -127,8 +127,8 @@ The system was evaluated using multiple queries derived from the documents.
 1. Clone repository:
 
 ```bash
-git clone <your-repo-link>
-cd <repo-name>
+git clone <https://github.com/saurabhkmr1092/AI-RAG-Document-Assistant>
+cd <AI-RAG-Document-Assistant>
 ```
 
 2. Install dependencies:
