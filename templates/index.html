@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Indecimal AI Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <h1> Indecimal AI Assistant</h1>
+
+    <div class="chat-container">
+
+        <input type="text" id="query" placeholder="Ask about construction, pricing, process..." />
+        <button onclick="sendQuery()">Ask</button>
+
+        <div class="response">
+
+            <h3>Answer</h3>
+            <div class="answer-box" id="answer"></div>
+
+            <h3>Context</h3>
+            <div class="context-box">
+                <ul id="context"></ul>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        async function sendQuery() {
+            let query = document.getElementById("query").value;
+
+            let response = await fetch("/ask", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({query: query})
+            });
+
+            let data = await response.json();
+
+            document.getElementById("answer").innerText = data.answer;
+
+            let contextList = document.getElementById("context");
+            contextList.innerHTML = "";
+
+            data.context.forEach((c, index) => {
+                let li = document.createElement("li");
+                li.innerText = c;
+                contextList.appendChild(li);
+            });
+        }
+    </script>
+
+</body>
+</html>
