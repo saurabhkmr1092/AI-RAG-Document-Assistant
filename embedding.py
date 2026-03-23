@@ -4,7 +4,7 @@ import numpy as np
 from chunks import create_chunks
 
 # Load embedding model
-model = SentenceTransformer('all-MiniLM-L6-v2')
+model = SentenceTransformer('paraphrase-MiniLM-L3-v2')
 
 # Step 1: Load chunks
 chunks = create_chunks()
