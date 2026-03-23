@@ -11,7 +11,7 @@ def search(query, k=5):
     import numpy as np
     
     # Load embedding model
-    model = SentenceTransformer('all-MiniLM-L6-v2')
+    model = SentenceTransformer('paraphrase-MiniLM-L3-v2')
 
     # Step 2: Generate embeddings
     embeddings = model.encode(texts)
