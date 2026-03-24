@@ -122,6 +122,45 @@ The system was evaluated using multiple queries derived from the documents.
 
 ---
 
+
+
+## 🧪 Local LLM Integration (Ollama)
+
+1. **Configuration**
+
+   * The system includes a configurable flag to switch between cloud and local LLM:
+   * `USE_LOCAL_LLM = False` (default for deployment)
+   * `USE_LOCAL_LLM = True` enables local inference using Ollama
+
+2. **Local Setup**
+
+   * Install Ollama from https://ollama.com
+   * Pull the required model:
+     * `ollama pull phi3`
+   * Run the model locally:
+     * `ollama run phi3`
+
+3. **Architecture (Local Mode)**
+
+   * When enabled, the pipeline switches from cloud LLM to local inference:
+   * User → FAISS → Context → Ollama (Local LLM) → Answer
+
+4. **Execution Behavior**
+
+   * The system uses a conditional switch to route generation:
+     * OpenRouter is used when `USE_LOCAL_LLM = False`
+     * Ollama is used when `USE_LOCAL_LLM = True`
+   * This design ensures seamless switching without affecting retrieval
+
+5. **Deployment Constraint**
+
+   * Local LLM is supported only in a local environment
+   * Render deployment uses OpenRouter due to lack of local model support
+   * Embedding generation remains API-based (OpenRouter)
+
+---
+
+
 ## 🛠️ How to Run Locally
 
 1. Clone repository:
@@ -174,4 +213,4 @@ Saurabh Kumar
 
 ## 📌 Summary
 
-This project demonstrates a complete end-to-end RAG pipeline including document processing, vector search, grounded answer generation, deployment, and evaluation under real-world constraints.
+This project demonstrates a complete end-to-end RAG pipeline including document processing, vector search, grounded answer generation, deployment, and evaluation under real-world constraints, with support for both cloud-based and local LLM inference.
