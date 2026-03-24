@@ -6,6 +6,9 @@ from embedding import search
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 
+USE_LOCAL_LLM = False      # False for Render, True for local testing
+
+
 def generate_answer(query, context_chunks):
     context_text = "\n\n".join([chunk["text"] for chunk in context_chunks])
 
@@ -25,7 +28,10 @@ Question:
 
 Answer:
 """
-
+    
+    if USE_LOCAL_LLM:
+        return query_ollama(prompt)
+    
     response = requests.post(
         url="https://openrouter.ai/api/v1/chat/completions",
         headers={
@@ -50,6 +56,28 @@ Answer:
     return response.json()["choices"][0]["message"]["content"]
 
 
+def query_ollama(prompt, model="phi3"):
+    url = "http://localhost:11434/api/generate"
+
+    payload = {
+        "model": model,
+        "prompt": prompt,
+        "stream": False
+    }
+
+    try:
+        response = requests.post(url, json=payload)
+        response_json = response.json()
+
+        if "response" in response_json:
+            return response_json["response"]
+        else:
+            return f"Ollama Error: {response_json}"
+
+    except Exception as e:
+        return f"Ollama Connection Error: {str(e)}"
+
+
 def rag_query(query):
     # Step 1: Retrieve
     retrieved_chunks = search(query)
@@ -58,7 +86,6 @@ def rag_query(query):
     answer = generate_answer(query, retrieved_chunks)
 
     return retrieved_chunks, answer
-
 
 # Test
 if __name__ == "__main__":
