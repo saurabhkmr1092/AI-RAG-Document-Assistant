@@ -1,6 +1,6 @@
 # AI RAG Document Assistant
 
-## 📌 Overview
+##  Overview
 
 This project implements a Retrieval-Augmented Generation (RAG) based chatbot that answers user queries using structured company documents (Indecimal).
 
@@ -8,13 +8,13 @@ The system retrieves relevant document chunks and generates grounded responses u
 
 ---
 
-## 🚀 Live Demo
+##  Live Demo
 
-👉 https://ai-rag-document-assistant-34ci.onrender.com
+ https://ai-rag-document-assistant-34ci.onrender.com
 
 ---
 
-## ⚙️ Tech Stack
+##  Tech Stack
 
 * Python (Flask)
 * FAISS (Vector Similarity Search)
@@ -25,7 +25,7 @@ The system retrieves relevant document chunks and generates grounded responses u
 
 ---
 
-## 🧠 System Architecture
+##  System Architecture
 
 1. **Document Processing**
 
@@ -54,7 +54,7 @@ The system retrieves relevant document chunks and generates grounded responses u
 
 ---
 
-## 🔍 Grounding Strategy
+##  Grounding Strategy
 
 To ensure reliable and factual responses:
 
@@ -64,7 +64,7 @@ To ensure reliable and factual responses:
 
 ---
 
-## 🔎 Transparency
+##  Transparency
 
 The system provides full transparency by displaying:
 
@@ -75,7 +75,7 @@ This allows users to verify how answers are formed.
 
 ---
 
-## 📊 Quality Evaluation (Bonus)
+##  Quality Evaluation (Bonus)
 
 The system was evaluated using multiple queries derived from the documents.
 
@@ -92,7 +92,7 @@ The system was evaluated using multiple queries derived from the documents.
 | Delay prevention?       | High              | Good           | Slight        | Partial      | Slight inference      |
 | Maintenance program?    | High              | High           | No            | Complete     | Correct coverage      |
 
-### 🧠 Observations
+###  Observations
 
 * Retrieval quality is consistently high due to FAISS-based similarity search.
 * Most answers are well-grounded in retrieved context.
@@ -101,7 +101,7 @@ The system was evaluated using multiple queries derived from the documents.
 
 ---
 
-## ⚠️ Design Decisions & Trade-offs
+##  Design Decisions & Trade-offs
 
 ### Embedding Model Choice
 
@@ -124,7 +124,7 @@ The system was evaluated using multiple queries derived from the documents.
 
 
 
-## 🧪 Local LLM Integration (Ollama)
+##  Local LLM Integration (Ollama)
 
 1. **Configuration**
 
@@ -161,7 +161,7 @@ The system was evaluated using multiple queries derived from the documents.
 ---
 
 
-## 🛠️ How to Run Locally
+##  How to Run Locally
 
 1. Clone repository:
 
@@ -196,7 +196,7 @@ http://127.0.0.1:5000
 
 ---
 
-## 🌐 Deployment
+##  Deployment
 
 * Hosted on Render
 * Uses Gunicorn for production serving
@@ -205,12 +205,12 @@ http://127.0.0.1:5000
 ---
 
 
-## 👨‍💻 Author
+##  Author
 
 Saurabh Kumar
 
 ---
 
-## 📌 Summary
+##  Summary
 
 This project demonstrates a complete end-to-end RAG pipeline including document processing, vector search, grounded answer generation, deployment, and evaluation under real-world constraints, with support for both cloud-based and local LLM inference.
