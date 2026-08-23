@@ -41,7 +41,7 @@ Answer:
             "X-Title": "RAG Chatbot"
         },
         json={
-            "model": "meta-llama/llama-3-8b-instruct",
+            "model": "meta-llama/llama-3.1-8b-instruct",
             "messages": [
                 {"role": "user", "content": prompt}
             ],
